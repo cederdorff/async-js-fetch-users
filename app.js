@@ -1,6 +1,6 @@
 const url = "https://raw.githubusercontent.com/cederdorff/mdu-frontend/main/data/users.json";
 
-async function getData() {
+async function getUsers() {
     const response = await fetch(url);
     const data = await response.json();
     return data;
@@ -16,11 +16,11 @@ function displayUsers(userList) {
                 <p>${user.title}</p>
             </article>`;
     }
-    document.querySelector("#content").innerHTML = html;
+    document.querySelector("#content").insertAdjacentHTML("afterbegin", html);
 }
 
 async function initApp() {
-    const users = await getData();
+    const users = await getUsers();
     displayUsers(users);
 }
 
